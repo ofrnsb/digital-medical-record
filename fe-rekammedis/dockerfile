@@ -1,0 +1,7 @@
+FROM node:20 as BUILDER
+WORKDIR /app
+COPY package.json .
+COPY . .
+RUN npm install
+
+ENTRYPOINT [ "npm", "start"]

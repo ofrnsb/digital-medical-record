@@ -1,0 +1,33 @@
+{
+  "name": "fe-rekammedis",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run next\" \"npm run server\"",
+    "build": "next build",
+    "start": "concurrently \"npm run next\" \"npm run server\"",
+    "next": "next dev",
+    "server": "node server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "express": "^4.19.2",
+    "next": "14.2.3",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "http-proxy-middleware": "^3.0.0",
+    "postcss": "^8",
+    "qs": "^6.12.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
