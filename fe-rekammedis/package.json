@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "concurrently \"npm run next\" \"npm run server\"",
     "build": "next build",
-    "start": "concurrently \"next start -p 9092\" \"node server.js\"",
-    "next": "next start -p 9092",
+    "start": "concurrently \"next start\" \"node server.js\"",
+    "next": "next start",
     "server": "node server.js"
   },
   "dependencies": {
