@@ -11,6 +11,8 @@ services:
     build: ./fe-rekammedis
     depends_on:
       - rekammedis
+    ports:
+      - '9092:9092'
 
   apigateway:
     build: ./api-gateway
