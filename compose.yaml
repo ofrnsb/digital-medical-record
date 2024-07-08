@@ -12,7 +12,7 @@ services:
     depends_on:
       - rekammedis
     ports:
-      - '9092:9092'
+      - '3000:3000'
 
   apigateway:
     build: ./api-gateway
