@@ -1,4 +1,9 @@
 services:
+  configserver:
+    build: ./config-server
+    ports:
+      - '8082:8082'
+
   rekammedis:
     build: ./rekamMedis
     ports:
@@ -20,8 +25,3 @@ services:
       - '8090:8090'
     depends_on:
       - configserver
-
-  configserver:
-    build: ./config-server
-    ports:
-      - '8082:8082'
