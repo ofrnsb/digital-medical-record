@@ -12,7 +12,7 @@ services:
   #     - configserver
 
   eurekaserver:
-    build: ./eureka-server
+    build: ./service-server
     ports:
       - '8761:8761'
 
