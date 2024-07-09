@@ -11,13 +11,18 @@ services:
   #   depends_on:
   #     - configserver
 
+  eurekaserver:
+    build: ./eureka-server
+    ports:
+      - '8761:8761'
+
   rekammedis:
     build: ./rekamMedis
     ports:
       - '8080:8080'
-    # depends_on:
-    #   - configserver
-    #   - apigateway
+    depends_on:
+      - eurekaserver
+      
 
   # frontend:
   #   build: ./fe-rekammedis
