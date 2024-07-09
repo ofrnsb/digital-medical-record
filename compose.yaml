@@ -18,9 +18,9 @@ services:
     depends_on:
       - eurekaserver
 
-  # frontend:
-  #   build: ./fe-rekammedis
-  #   depends_on:
-  #     - rekammedis
-  #   ports:
-  #     - '3000:3000'
+  frontend:
+    build: ./fe-rekammedis
+    depends_on:
+      - rekammedis
+    ports:
+      - '3000:3000'
