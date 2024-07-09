@@ -1,16 +1,4 @@
 services:
-  configserver:
-    build: ./config-server
-    ports:
-      - '8082:8082'
-
-  # apigateway:
-  #   build: ./api-gateway
-  #   ports:
-  #     - '8090:8090'
-  #   depends_on:
-  #     - eurekaserver
-
   eurekaserver:
     build: ./service-server
     ports:
@@ -21,7 +9,13 @@ services:
     ports:
       - '8080:8080'
     depends_on:
-      - configserver
+      - eurekaserver
+
+  apigateway:
+    build: ./api-gateway
+    ports:
+      - '8090:8090'
+    depends_on:
       - eurekaserver
 
   # frontend:
