@@ -27,6 +27,5 @@ services:
 
   nodeserver:
     build: ./node-server
-    depends_on:
     ports:
       - '3001:3001'
