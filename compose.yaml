@@ -2,14 +2,18 @@ services:
   eurekaserver:
     build: ./service-server
     ports:
-      - '8761:8761'
+      - '8761'
+    networks:
+      - my-network
 
   rekammedis:
     build: ./rekamMedis
     ports:
-      - '8080:8080'
+      - '8080'
     depends_on:
       - eurekaserver
+    networks:
+      - my-network
 
   apigateway:
     build: ./api-gateway
@@ -17,6 +21,8 @@ services:
       - '8090:8090'
     depends_on:
       - eurekaserver
+    networks:
+      - my-network
 
   frontend:
     build: ./fe-rekammedis
@@ -24,8 +30,16 @@ services:
       - rekammedis
     ports:
       - '3000:3000'
+    networks:
+      - my-network
 
   nodeserver:
     build: ./node-server
     ports:
-      - '3001:3001'
+      - '3001'
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
