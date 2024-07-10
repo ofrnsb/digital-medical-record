@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "concurrently \"npm run next\" \"npm run server\"",
     "build": "next build",
-    "start": "concurrently \"next start\" \"node server.js\"",
+    "start": "next start",
     "next": "next start",
     "server": "node server.js"
   },

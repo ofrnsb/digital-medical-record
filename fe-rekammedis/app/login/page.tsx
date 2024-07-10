@@ -36,7 +36,7 @@ export default function Login() {
 
         axios
           .post(
-            'http://localhost:3001/api/connect/token',
+            'http://46.101.126.39:3001/api/connect/token',
             qs.stringify({
               client_id: CLIENT_ID,
               client_secret: CLIENT_SECRET,
