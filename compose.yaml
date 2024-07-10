@@ -1,9 +1,10 @@
-version: '3'
+version: '2.28'
+
 services:
   eurekaserver:
     build: ./service-server
     ports:
-      - '8761'
+      - '8761:8761'
     networks:
       - my-network
 
@@ -37,7 +38,7 @@ services:
   nodeserver:
     build: ./node-server
     ports:
-      - '3001'
+      - '3001:3001'
     networks:
       - my-network
 
