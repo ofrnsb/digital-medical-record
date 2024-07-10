@@ -14,6 +14,7 @@ public class CorsConfig {
     CorsConfiguration corsConfiguration = new CorsConfiguration();
     corsConfiguration.addAllowedOrigin("https://frontend-6pemi.ondigitalocean.app");
     corsConfiguration.addAllowedOrigin("http://127.0.0.1:3000");
+    corsConfiguration.addAllowedOrigin("http://46.101.126.39");
     corsConfiguration.addAllowedMethod("*");
     corsConfiguration.addAllowedHeader("*");
     corsConfiguration.setAllowCredentials(true);
