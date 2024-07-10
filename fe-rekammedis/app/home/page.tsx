@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import LoadingBar from '../Components/LoadingBar';
 import Modals from '../Components/Modals';
 import PatientModal from '../Components/PatientModal';
-import { PROD_URL } from '../Data/URL';
+import { PROD_VM } from '../Data/URL';
 
 export default function HomeDashboard() {
   const [userData, setUserData] = useState<Patient[]>([]);
@@ -33,7 +33,7 @@ export default function HomeDashboard() {
       push('/login');
     } else {
       axios
-        .get(`${PROD_URL}/patient/firstStep`, {
+        .get(`${PROD_VM}/patient/firstStep`, {
           headers: { Authorization: `Bearer ${isAuthenticaedUser}` },
         })
         .then((res) => {
@@ -51,7 +51,7 @@ export default function HomeDashboard() {
     setSelectedPatientId(index);
     setIsShowmodal('processPatient');
     axios
-      .get(`${PROD_URL}/doctor`, {
+      .get(`${PROD_VM}/doctor`, {
         headers: { Authorization: `Bearer ${isAuthenticaedUser}` },
       })
       .then((res) => {
@@ -66,7 +66,7 @@ export default function HomeDashboard() {
   const onFirstProcessPatient = () => {
     setIsLoading(true);
     axios
-      .get(`${PROD_URL}/patient/firstStep`, {
+      .get(`${PROD_VM}/patient/firstStep`, {
         headers: { Authorization: `Bearer ${isAuthenticaedUser}` },
       })
       .then((res) => {
@@ -82,7 +82,7 @@ export default function HomeDashboard() {
   const onSecondProcessPatient = () => {
     setIsLoading(true);
     axios
-      .get(`${PROD_URL}/patient/secondStep`, {
+      .get(`${PROD_VM}/patient/secondStep`, {
         headers: { Authorization: `Bearer ${isAuthenticaedUser}` },
       })
       .then((res) => {
@@ -99,7 +99,7 @@ export default function HomeDashboard() {
   const onThirdStepPatient = () => {
     setIsLoading(true);
     axios
-      .get(`${PROD_URL}/patient/thirdStep`, {
+      .get(`${PROD_VM}/patient/thirdStep`, {
         headers: { Authorization: `Bearer ${isAuthenticaedUser}` },
       })
       .then((res) => {

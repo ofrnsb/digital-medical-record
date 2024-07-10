@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { PROD_URL } from '../Data/URL';
+import { PROD_VM } from '../Data/URL';
 
 export default function Register() {
   const { push } = useRouter();
@@ -29,7 +29,7 @@ export default function Register() {
 
     try {
       axios
-        .post(`${PROD_URL}/register`, {
+        .post(`${PROD_VM}/register`, {
           username,
           password,
           role: role,

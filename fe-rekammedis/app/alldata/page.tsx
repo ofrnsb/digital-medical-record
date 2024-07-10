@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import AddDataForm from '../Components/AddDataForm';
 import LoadingBar from '../Components/LoadingBar';
-import { PROD_URL } from '../Data/URL';
+import { PROD_VM } from '../Data/URL';
 
 export default function AllData() {
   const [addDataType, setAddDataType] = useState<string>('');
@@ -21,7 +21,7 @@ export default function AllData() {
     const doctorName = e.target.doctorName.value;
     axios
       .post(
-        `${PROD_URL}/doctor/add`,
+        `${PROD_VM}/doctor/add`,
         {
           doctorName: doctorName,
         },

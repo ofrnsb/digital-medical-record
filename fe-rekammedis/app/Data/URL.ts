@@ -1,4 +1,5 @@
 export const PROD_URL = 'https://hospital-vndga.ondigitalocean.app/api-gateway';
+export const PROD_VM = 'http://46.101.126.39:8090';
 export const DEV_URL = 'http://localhost:8080';
 export const ICD_URL =
   'https://id.who.int/icd/release/11/2024-01/mms/search?q=';

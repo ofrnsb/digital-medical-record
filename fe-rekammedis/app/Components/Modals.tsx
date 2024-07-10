@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import { useState } from 'react';
-import { PROD_URL } from '../Data/URL';
+import { PROD_VM } from '../Data/URL';
 
 export default function Modals({
   setIsShowmodal,
@@ -42,7 +42,7 @@ export default function Modals({
 
     axios
       .post(
-        `${PROD_URL}/patient/register`,
+        `${PROD_VM}/patient/register`,
         {
           patientName: patientName,
           patientAge: patientAge,
@@ -90,7 +90,7 @@ export default function Modals({
 
     axios
       .post(
-        `${PROD_URL}/patient/addPatientData/${selectedPatientId}`,
+        `${PROD_VM}/patient/addPatientData/${selectedPatientId}`,
         {
           doctorName: doctorName,
           bloodpressure: bloodpressure,

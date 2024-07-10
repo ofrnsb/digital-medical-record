@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import qs from 'qs';
 import { useEffect, useState } from 'react';
 import { CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, SCOPE } from '../Data/CONST';
-import { PROD_URL } from '../Data/URL';
+import { PROD_VM } from '../Data/URL';
 
 export default function Login() {
   const { push } = useRouter();
@@ -27,7 +27,7 @@ export default function Login() {
       .value;
 
     axios
-      .post(`${PROD_URL}/login`, {
+      .post(`${PROD_VM}/login`, {
         username: username,
         password: password,
       })

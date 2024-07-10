@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { PROD_URL } from '../Data/URL';
+import { PROD_VM } from '../Data/URL';
 
 export default function PatientModal({
   userData,
@@ -53,7 +53,7 @@ export default function PatientModal({
   const updateData = (_id: number, index: number) => {
     axios
       .put(
-        `${PROD_URL}/patient/update/${userData.id}?comingDateId=${_id}`,
+        `${PROD_VM}/patient/update/${userData.id}?comingDateId=${_id}`,
         {
           patientName: userData.patientName,
           patientAge: userData.patientAge,
@@ -68,7 +68,7 @@ export default function PatientModal({
       )
       .then(() => {
         axios
-          .get(`${PROD_URL}/patient/secondStep`, {
+          .get(`${PROD_VM}/patient/secondStep`, {
             headers: { Authorization: `Bearer ${isAuthenticaedUser}` },
           })
           .then((res) => {
