@@ -1,10 +1,6 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const express = require('express');
-const next = require('next');
 const cors = require('cors'); // Import cors middleware
-
-const app = next({ dev: false });
-const handle = app.getRequestHandler();
 
 const server = express();
 
@@ -33,7 +29,7 @@ server.use(
 );
 
 server.all('*', (req, res) => {
-  return handle(req, res);
+  res.status(404).send('Not Found');
 });
 
 const port = 3001;
