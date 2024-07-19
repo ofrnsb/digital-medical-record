@@ -148,7 +148,7 @@ export default function HomeDashboard() {
                   setpatientType('new');
                   onFirstProcessPatient();
                 }}
-                className='bg-teal-100 rounded-md w-[125px] h-[30px] mb-[20px]'
+                className='bg-gray-200 hover:bg-gray-300 rounded-md w-[125px] h-[30px] mb-[20px]'
               >
                 Appointments
               </button>
@@ -157,7 +157,7 @@ export default function HomeDashboard() {
                   setpatientType('waiting');
                   onSecondProcessPatient();
                 }}
-                className='bg-teal-300 rounded-md w-[125px] h-[30px] mb-[20px]'
+                className='bg-gray-200 hover:bg-gray-300 rounded-md w-[125px] h-[30px] mb-[20px]'
               >
                 Waiting
               </button>
@@ -166,7 +166,7 @@ export default function HomeDashboard() {
                   setpatientType('done');
                   onThirdStepPatient();
                 }}
-                className='bg-blue-200 rounded-md w-[125px] h-[30px] mb-[20px]'
+                className='bg-gray-200 hover:bg-gray-300 rounded-md w-[125px] h-[30px] mb-[20px]'
               >
                 Patients Data
               </button>
