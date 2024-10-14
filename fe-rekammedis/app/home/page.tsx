@@ -27,6 +27,12 @@ export default function HomeDashboard() {
   const [doctorData, setDoctorData] = useState<Doctor[]>([]);
   let patientId = 0;
 
+  const Logout = () => {
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('token');
+    push('/login');
+  };
+
   useEffect(() => {
     setIsLoading(true);
     if (!isAuthenticaedUser) {
@@ -111,7 +117,14 @@ export default function HomeDashboard() {
 
   return !isAuthenticaedUser ? null : (
     <main className='flex flex-col items-center justify-between min-h-screen'>
-      <nav className='bg-gray-200 p-[10px] w-full h-[60px] flex items-center justify-between'></nav>
+      <nav className='bg-gray-200 p-[10px] w-full h-[60px] flex items-center justify-between'>
+        <button
+          className='bg-red-100 rounded-md w-[125px] h-[30px] ml-auto mr-[10px]'
+          onClick={Logout}
+        >
+          Logout
+        </button>
+      </nav>
 
       <div className='flex-1 w-full flex items-center justify-center'>
         <section className='bg-gray-300 w-[250px] h-screen '>

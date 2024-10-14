@@ -5,11 +5,16 @@ import { useEffect, useState } from 'react';
 import ICDComponent from '../Components/ICDComponent';
 import LoadingBar from '../Components/LoadingBar';
 import { ICD_URL } from '../Data/URL';
+
+import { useRouter } from 'next/navigation';
+
 // @ts-ignore
 import qs from 'qs';
+
 import { CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, SCOPE } from '../Data/CONST';
 
 export default function ICD() {
+  const { push } = useRouter();
   const [icdResult, setIcdResult] = useState([]);
   const [showDetail, setShowDetail] = useState<IcdResult>({
     show: false,
@@ -19,8 +24,14 @@ export default function ICD() {
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  const Logout = () => {
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('token');
+    push('/login');
+  };
+
   useEffect(() => {
-	  console.log('IDC');
+    console.log('IDC');
     axios
       .post(
         'https://oftech.me/idc',
@@ -94,7 +105,15 @@ export default function ICD() {
 
   return (
     <main className='flex flex-col items-center justify-between min-h-screen'>
-      <nav className='bg-gray-200 p-[10px] w-full h-[60px] flex items-center justify-between'></nav>
+      <nav className='bg-gray-200 p-[10px] w-full h-[60px] flex items-center justify-between'>
+        <button
+          className='bg-red-100 rounded-md w-[125px] h-[30px] ml-auto mr-[10px]'
+          onClick={Logout}
+        >
+          Logout
+        </button>
+      </nav>
+
       <div className='flex-1 w-full flex items-center justify-center'>
         <section className='bg-gray-300 w-[250px] h-screen '>
           <div className='flex flex-col gap-[10px]'>

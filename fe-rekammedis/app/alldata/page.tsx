@@ -1,6 +1,7 @@
 'use client';
 import axios from 'axios';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import AddDataForm from '../Components/AddDataForm';
 import LoadingBar from '../Components/LoadingBar';
@@ -13,6 +14,13 @@ export default function AllData() {
   if (typeof window !== 'undefined') {
     isAuthenticaedUser = localStorage.getItem('jwt');
   }
+  const { push } = useRouter();
+
+  const Logout = () => {
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('token');
+    push('/login');
+  };
 
   const addDoctorData = (e: any) => {
     setIsLoading(true);
@@ -27,7 +35,7 @@ export default function AllData() {
         },
         {
           headers: { Authorization: `Bearer ${isAuthenticaedUser}` },
-        },
+        }
       )
       .then(() => {
         setIsLoading(false);
@@ -99,7 +107,15 @@ export default function AllData() {
 
   return (
     <main className='flex flex-col items-center justify-between min-h-screen'>
-      <nav className='bg-gray-200 p-[10px] w-full h-[60px] flex items-center justify-between'></nav>
+      <nav className='bg-gray-200 p-[10px] w-full h-[60px] flex items-center justify-between'>
+        <button
+          className='bg-red-100 rounded-md w-[125px] h-[30px] ml-auto mr-[10px]'
+          onClick={Logout}
+        >
+          Logout
+        </button>
+      </nav>
+
       <div className='flex-1 w-full flex items-center justify-center'>
         <section className='bg-gray-300 w-[250px] h-screen '>
           <div className='flex flex-col gap-[10px]'>
