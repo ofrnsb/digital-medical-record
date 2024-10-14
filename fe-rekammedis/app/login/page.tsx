@@ -3,10 +3,7 @@
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-// @ts-ignore
-import qs from 'qs';
 import { useEffect, useState } from 'react';
-import { CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, SCOPE } from '../Data/CONST';
 import { PROD_VM } from '../Data/URL';
 
 export default function Login() {
@@ -33,29 +30,6 @@ export default function Login() {
       })
       .then((res) => {
         localStorage.setItem('jwt', res.data.payload.jwt);
-
-        axios
-          .post(
-            'http://localhost:3001/getToken',
-            qs.stringify({
-              client_id: CLIENT_ID,
-              client_secret: CLIENT_SECRET,
-              scope: SCOPE,
-              grant_type: GRANT_TYPE,
-            }),
-            {
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-              },
-            },
-          )
-          .then((res) => {
-            setShowLoading(false);
-            localStorage.setItem('token', res.data.access_token);
-          })
-          .catch(() => {
-            setShowLoading(false);
-          });
         push('/home');
       });
     form.reset();

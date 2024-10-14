@@ -1,10 +1,13 @@
 'use client';
 import axios from 'axios';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ICDComponent from '../Components/ICDComponent';
 import LoadingBar from '../Components/LoadingBar';
 import { ICD_URL } from '../Data/URL';
+// @ts-ignore
+import qs from 'qs';
+import { CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, SCOPE } from '../Data/CONST';
 
 export default function ICD() {
   const [icdResult, setIcdResult] = useState([]);
@@ -15,6 +18,27 @@ export default function ICD() {
     exclusions: [],
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    axios
+      .post(
+        'http://localhost:3001/getToken',
+        qs.stringify({
+          client_id: CLIENT_ID,
+          client_secret: CLIENT_SECRET,
+          scope: SCOPE,
+          grant_type: GRANT_TYPE,
+        }),
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      )
+      .then((res) => {
+        localStorage.setItem('token', res.data.access_token);
+      });
+  }, []);
 
   const searchICD = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,7 +59,7 @@ export default function ICD() {
         setIcdResult(res.data.destinationEntities);
         form.reset();
       })
-      .catch((err) => {
+      .catch(() => {
         setIsLoading(false);
       });
   };
