@@ -20,9 +20,10 @@ export default function ICD() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
+	  console.log('IDC');
     axios
       .post(
-        'http://localhost:3001/getToken',
+        'https://oftech.me/idc',
         qs.stringify({
           client_id: CLIENT_ID,
           client_secret: CLIENT_SECRET,
