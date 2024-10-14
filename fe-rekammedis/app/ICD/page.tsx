@@ -68,7 +68,7 @@ export default function ICD() {
   const getDetail = (value: string) => {
     setIsLoading(true);
     axios
-      .get(`http://localhost:3001/getdetails/${value}`, {
+      .get(`https://oftech.me/getdetails/${value}`, {
         headers: {
           'Content-Type': 'application/json',
           'Accept-Language': 'en',
