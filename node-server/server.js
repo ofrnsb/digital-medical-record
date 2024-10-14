@@ -28,6 +28,17 @@ server.use(
   }),
 );
 
+server.use(
+  '/getToken',
+  createProxyMiddleware({
+    target: 'https://icdaccessmanagement.who.int/connect/token',
+    changeOrigin: true,
+    pathRewrite: {
+      '^/getToken': '',
+    },
+  })
+);
+
 server.all('*', (req, res) => {
   res.status(404).send('Not Found');
 });

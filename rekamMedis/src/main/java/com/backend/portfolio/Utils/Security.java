@@ -34,7 +34,8 @@ public class Security {
             .permitAll()
             .requestMatchers("/patients/thirdStep")
             .hasAuthority("dokter")
-            .anyRequest().hasAnyAuthority("suster", "dokter"))
+            .anyRequest().permitAll()
+	    )
         .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authenticationProvider(AuthenticationProvider)
         .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);

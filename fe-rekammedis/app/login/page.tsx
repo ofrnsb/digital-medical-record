@@ -36,7 +36,7 @@ export default function Login() {
 
         axios
           .post(
-            'https://oftech.me/idc',
+            'http://localhost:3001/getToken',
             qs.stringify({
               client_id: CLIENT_ID,
               client_secret: CLIENT_SECRET,
