@@ -8,6 +8,10 @@ import Modals from '../Components/Modals';
 import PatientModal from '../Components/PatientModal';
 import { PROD_VM } from '../Data/URL';
 
+// @ts-ignore
+import qs from 'qs';
+import { CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, SCOPE } from '../Data/CONST';
+
 export default function HomeDashboard() {
   const [userData, setUserData] = useState<Patient[]>([]);
   const [userData2, setUserData2] = useState<Patient[]>([]);
@@ -39,9 +43,25 @@ export default function HomeDashboard() {
         .then((res) => {
           setIsLoading(false);
           setUserData(res.data.payload);
-        })
-        .catch((error) => {
-          console.error('Error fetching data:', error);
+        });
+
+      axios
+        .post(
+          'http://localhost:3001/getToken',
+          qs.stringify({
+            client_id: CLIENT_ID,
+            client_secret: CLIENT_SECRET,
+            scope: SCOPE,
+            grant_type: GRANT_TYPE,
+          }),
+          {
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+          }
+        )
+        .then((res) => {
+          localStorage.setItem('token', res.data.access_token);
         });
     }
   }, [refetch]);
